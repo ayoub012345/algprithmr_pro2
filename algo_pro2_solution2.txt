@@ -1,0 +1,49 @@
+ALGORITHME	algo_pro_2
+
+VAR
+	t1 : array_of integer[4];
+	t2 : array_of integer[5];
+	hash_t1 :hash.table<integer,integer>;
+	hash_t2 :hash.table<integer,integer>;
+	x , som , i , j : integer;
+BEGIN
+	som :=  x  := 0;
+	t1 := {3,1,7,9};
+	t2 := {2,4,1,9,3};
+
+ 	FOR j FROM 0 TO  t1.length
+		hash_t1.insert(j,t1[j]);
+	END_FOR	
+	
+	FOR j FROM 0 TO  t2.length
+		hash_t2.insert(j,t2[j]);
+	END_FOR	
+
+	FOR  i  FROM 0 TO  hash_t1.length
+		FOR j FROM 0 TO  hash_t2.length
+			IF ( hash_t1.get(i) = hash_t2.get(j) )
+				x :=  1;
+			END_if
+		END_FOR	
+
+		IF ( x = 0)
+			som :=  som + hash_t1.get(i);
+		END_IF
+		x  := 0;
+	END_FOR	
+
+         	FOR  i  FROM 0 TO  t2.length
+		FOR j FROM 0 TO  t1.length
+			IF ( hash_t2.get(i) = hash_t1.get(j) )
+				x :=  1;
+			END_if
+		END_FOR	
+
+		IF ( x = 0)
+			som :=  som + hash_t2.get(i);
+		END_IF
+		x  := 0;
+	END_FOR
+
+	WRITE ( som );
+END

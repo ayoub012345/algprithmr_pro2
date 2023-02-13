@@ -1,0 +1,39 @@
+ALGORITHME	algo_pro_2
+
+VAR
+	t1 : array_of integer[4];
+	t2 : array_of integer[5];
+	x , som : integer;
+BEGIN
+	som :=  x  := 0;
+	t1 := {3,1,7,9};
+	t2 := {2,4,1,9,3};
+ 	
+	FOR  i  FROM 0 TO  t1.length
+		FOR j FROM 0 TO  t2.length
+			IF ( t1[i] = t2[j] )
+				x :=  1;
+			END_if
+		END_FOR	
+
+		IF ( x = 0)
+			som :=  som + t1[i];
+		END_IF
+		x  := 0;
+	END_FOR	
+
+         	FOR  i  FROM 0 TO  t2.length
+		FOR j FROM 0 TO  t1.length
+			IF ( t2[i] = t1[j] )
+				x :=  1;
+			END_if
+		END_FOR	
+
+		IF ( x = 0)
+			som :=  som + t2[i];
+		END_IF
+		x  := 0;
+	END_FOR
+
+	WRITE ( som );
+END
